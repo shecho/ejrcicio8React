@@ -35,11 +35,12 @@ class App extends React.Component {
         headers: {
           "Content-Type": "application/json; charset=UTF-8",
         },
-        body: JSON.stringify(this.state.newUser),
-      })  
+        body: JSON.stringify(this.state.newUser)
+      }) 
         .then((response) => response.json())
         .then((results) => console.log(results))
         .catch((error) => console.log(error));
+        
   };
 
   handleInput = (e) => {
