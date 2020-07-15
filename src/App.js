@@ -30,36 +30,34 @@ class App extends React.Component {
     // console.log(e.target);
     e.preventDefault();
     //Agregar un post
-      fetch("https://academlo-api-users.herokuapp.com/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json; charset=UTF-8",
-        },
-        body: JSON.stringify(this.state.newUser)
-      }) 
-        .then((response) => response.json())
-        .then((results) => console.log(results))
-        .catch((error) => console.log(error));
-        
+    fetch("https://academlo-api-users.herokuapp.com/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify(this.state.newUser),
+    })
+      .then((response) => response.json())
+      .then((results) => console.log(results))
+      .catch((error) => console.log(error));
   };
 
   handleInput = (e) => {
-    
     // console.log(e.target.value);
     this.setState({
-      newUser:{
+      newUser: {
         ...this.state.newUser,
-          [e.target.name]:e.target.value
-      }
-    })
-     console.log(this.state.newUser);
+        [e.target.name]: e.target.value,
+      },
+    });
+    console.log(this.state.newUser);
   };
 
   render() {
     return (
       <>
         <div className="m-4 row">
-          <form onInput={this.handleInput} onSubmit={(e)=> this.addUser(e)}>
+          <form onInput={this.handleInput} onSubmit={(e) => this.addUser(e)}>
             <div className="form-group">
               <input
                 className="form-control"
@@ -92,7 +90,7 @@ class App extends React.Component {
                 placeholder="Password"
               />
             </div>
-              <input type="submit" />
+            <input type="submit" />
           </form>
         </div>
 
