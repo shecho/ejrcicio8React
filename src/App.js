@@ -1,5 +1,7 @@
 import React from "react";
 import "./App.css";
+import Users from "./components/c1/users";
+import Form from "./components/c2/form";
 
 class App extends React.Component {
   constructor() {
@@ -17,11 +19,10 @@ class App extends React.Component {
     // .then(datos =>console.log(datos))
   }
   getData = async () => {
-    let response = await fetch(
-      "https://academlo-api-users.herokuapp.com/users"
-    );
+    let url = "https://academlo-api-users.herokuapp.com/users";
+    let response = await fetch(url);
     let data = await response.json();
-    console.log(data);
+    // console.log(data);
     this.setState({ users: data.data });
     // console.log(this.state.users)
   };
@@ -53,59 +54,15 @@ class App extends React.Component {
     console.log(this.state.newUser);
   };
 
+  deleteUser = (e) => {
+    console.log(e.target.value);
+  };
   render() {
     return (
       <>
-        <div className="m-4 row">
-          <form onInput={this.handleInput} onSubmit={(e) => this.addUser(e)}>
-            <div className="form-group">
-              <input
-                className="form-control"
-                name="name"
-                type="text"
-                placeholder="Nombre"
-              />
-            </div>
-            <div className="form-group">
-              <input
-                className="form-control"
-                name="lastname"
-                type="text"
-                placeholder="Apellido"
-              />
-            </div>
-            <div className="form-group">
-              <input
-                className="form-control"
-                name="email"
-                type="text"
-                placeholder="Email"
-              />
-            </div>
-            <div className="form-group">
-              <input
-                className="form-control"
-                name="password"
-                type="password"
-                placeholder="Password"
-              />
-            </div>
-            <input type="submit" />
-          </form>
-        </div>
+        <Form handleInput={this.handleInput} addUser={this.addUser} />
 
-        {this.state.users.map((usuairos) => {
-          return (
-            <div className="card" key={usuairos.email}>
-              <div className="card-body">
-                <h1 className="card-title">
-                  {usuairos.name} {usuairos.lastname}
-                </h1>
-                <p className="card-text">{usuairos.email}</p>
-              </div>
-            </div>
-          );
-        })}
+        <Users users={this.state.users} />
       </>
     );
   }
