@@ -54,15 +54,18 @@ class App extends React.Component {
     console.log(this.state.newUser);
   };
 
-  deleteUser = (e) => {
-    console.log(e.target.value);
+  deleteUser = async (e) => {
+    console.log(e.target.parentElement.firstChild.id);
+    let id = e.target.parentElement.firstChild.id;
+    let url = `https://academlo-api-users.herokuapp.com/user/${id}`;
+    let request = await fetch(url, { method: "DELETE" });
+    console.log(request);
   };
   render() {
     return (
       <>
         <Form handleInput={this.handleInput} addUser={this.addUser} />
-
-        <Users users={this.state.users} />
+        <Users deleteUser={this.deleteUser} users={this.state.users} />
       </>
     );
   }
