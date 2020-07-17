@@ -57,10 +57,11 @@ class App extends React.Component {
   // -----------------------------------------------------------------------------------------------
   // dlete user
   deleteUser = async (e) => {
-    console.log(e.target.parentElement.parentElement.firstElementChild.id);
-    let id = e.target.parentElement.firstChild.id;
+    // console.log(e.target.parentElement.parentElement.firstElementChild.id);
+    let id = e.target.parentElement.parentElement.firstElementChild.id;
+    console.log(id);
     let url = `https://academlo-api-users.herokuapp.com/user/${id}`;
-    console.log(url);
+    // console.log(url);
     let request = await fetch(url, { method: "DELETE" });
     console.log(request);
     this.getData();
