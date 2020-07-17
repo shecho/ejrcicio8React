@@ -10,6 +10,7 @@ class App extends React.Component {
     this.state = {
       users: [],
       newUser: {},
+      userEdited: {},
     };
   }
 
@@ -54,7 +55,8 @@ class App extends React.Component {
     });
     console.log(this.state.newUser);
   };
-
+  // -----------------------------------------------------------------------------------------------
+  // dlete user
   deleteUser = async (e) => {
     console.log(e.target.parentElement.firstChild.id);
     let id = e.target.parentElement.firstChild.id;
@@ -63,15 +65,29 @@ class App extends React.Component {
     console.log(request);
     this.getData();
   };
-  deleteUser = (e) => {
+  yy;
+  // editar usuario
+  updateUser = (e) => {
+    e.preventDefault();
     console.log(e);
   };
+  handleInputEdit = (e) => {
+    console.log(e);
+  };
+
+  editUser = (e) => {
+    console.log(e);
+  };
+  // -----------------------------------------------------------------------------------------------
   render() {
     return (
       <>
         <div className="row justify-content-center">
           <Form handleInput={this.handleInput} addUser={this.addUser} />
-          <EditForm />
+          <EditForm
+            handleInputEdit={this.handleInputEdit}
+            updateUser={this.updateUser}
+          />
         </div>
         <Users deleteUser={this.deleteUser} users={this.state.users} />
       </>

@@ -18,6 +18,7 @@ export default function Form(props) {
             <div className="form-group">
               <input
                 className="form-control"
+                capture
                 name="lastname"
                 type="text"
                 placeholder="Apellido"
@@ -39,7 +40,7 @@ export default function Form(props) {
                 placeholder="Password"
               />
             </div>
-            <input className="btn btn-success" type="submit" />
+            <input className="btn btn-success btn-block" type="submit" />
           </form>
         </div>
       </div>

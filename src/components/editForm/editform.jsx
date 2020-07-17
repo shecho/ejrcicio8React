@@ -1,18 +1,20 @@
 import React from "react";
 
-export default function editform(props) {
+export default function Form(props) {
+  const { name, lastname, email, password } = props;
   return (
     <>
       <div className="m-4 row">
         <div className="col-12 text-center">
           <h1> Edit User</h1>
-          <form onInput={props.handleInput} onSubmit={(e) => props.addUser(e)}>
+          <form onSubmit={props.updateUser} onInput={props.editInput}>
             <div className="form-group">
               <input
                 className="form-control"
                 name="name"
                 type="text"
                 placeholder="Nombre"
+                value={name}
               />
             </div>
             <div className="form-group">
@@ -20,15 +22,17 @@ export default function editform(props) {
                 className="form-control"
                 name="lastname"
                 type="text"
-                placeholder="Apellido"
+                placeholder="Apellidos"
+                value={lastname}
               />
             </div>
             <div className="form-group">
               <input
                 className="form-control"
                 name="email"
-                type="text"
+                type="email"
                 placeholder="Email"
+                value={email}
               />
             </div>
             <div className="form-group">
@@ -36,10 +40,11 @@ export default function editform(props) {
                 className="form-control"
                 name="password"
                 type="password"
-                placeholder="Password"
+                placeholder="Contraseña"
+                value={password}
               />
             </div>
-            <input className="btn btn-success" type="submit" />
+            <input className="btn btn-success" type=" submit" value="Update" />
           </form>
         </div>
       </div>
