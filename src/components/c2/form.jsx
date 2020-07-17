@@ -4,7 +4,7 @@ export default function Form(props) {
   return (
     <>
       <div className="m-4 row">
-        <div className="col-4">
+        <div className="col-4 text-center">
           <h1> Add User</h1>
           <form onInput={props.handleInput} onSubmit={(e) => props.addUser(e)}>
             <div className="form-group">
@@ -39,7 +39,7 @@ export default function Form(props) {
                 placeholder="Password"
               />
             </div>
-            <input type="submit" />
+            <input className="btn btn-success" type="submit" />
           </form>
         </div>
       </div>
