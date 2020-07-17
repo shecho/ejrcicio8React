@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Form(props) {
   let { name, lastname, email, password } = props.user;
-  // console.log(props);
+  console.log(props);
   return (
     <>
       <div className="m-4 row">
@@ -45,7 +45,11 @@ export default function Form(props) {
                 value={password}
               />
             </div>
-            <input className="btn btn-success" type=" submit" value="Update" />
+            <input
+              className="btn btn-success btn-block"
+              type="submit"
+              value="Update"
+            />
           </form>
         </div>
       </div>

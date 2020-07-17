@@ -42,6 +42,7 @@ class App extends React.Component {
     }).then((response) => response.json());
     // .then((results) => console.log(results))
     // .catch((error) => console.log(error));
+    this.getData();
   };
 
   handleInput = (e) => {
@@ -63,20 +64,28 @@ class App extends React.Component {
     let url = `https://academlo-api-users.herokuapp.com/user/${id}`;
     // console.log(url);
     let request = await fetch(url, { method: "DELETE" });
-    console.log(request);
+    // console.log(request);
     this.getData();
   };
 
   // editar usuario
   updateUser = async (e) => {
-    let id = 1;
     e.preventDefault();
+    let id = this.state.userEdited.id;
+    // console.log(this.state.userEdited.id);
+    let data = this.state.userEdited;
+    console.log(data);
     let url = `https://academlo-api-users.herokuapp.com/user/${id}`;
+    // console.log(url);
     let request = await fetch(url, {
       method: "PUT",
-      body: JSON.stringify(this.state.userEdited),
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify(data),
     });
-    console.log(request);
+    this.getData();
+    // console.log(request);
     // fetch aqui
   };
   handleInputEdit = (e) => {

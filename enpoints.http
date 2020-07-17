@@ -3,3 +3,4 @@ GET https://academlo-api-users.herokuapp.com/users
 ###
 
 
+GET https://academlo-api-users.herokuapp.com/users
