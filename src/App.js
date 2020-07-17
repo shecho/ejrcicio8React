@@ -60,6 +60,7 @@ class App extends React.Component {
     let url = `https://academlo-api-users.herokuapp.com/user/${id}`;
     let request = await fetch(url, { method: "DELETE" });
     console.log(request);
+    this.getData();
   };
   render() {
     return (
