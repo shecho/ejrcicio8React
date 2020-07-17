@@ -18,25 +18,10 @@ export default function Users(props) {
                     <h6 className="m-2 card-title">
                       {user.name} {user.lastname}
                     </h6>
-                    <i class="m-2 fa fa-pencil"></i>
                   </div>
-                  <div className="d-flex justify-content-center align-items-center ">
-                    <input
-                      className="d-none form-control"
-                      type="text"
-                      value={user.name}
-                    />
-                  </div>
+
                   <div className="d-flex justify-content-center align-items-center ">
                     <p className="m-2 card-text">{user.email}</p>
-                    <i class="m-2 fa fa-pencil" aria-hidden="true"></i>
-                  </div>
-                  <div>
-                    <input
-                      className=" d-none form-control"
-                      type="text"
-                      value={user.email}
-                    />
                   </div>
                 </div>
                 <div>
@@ -46,10 +31,12 @@ export default function Users(props) {
                     type="submit"
                   >
                     Delete
+                    <i className="m-2 fa fa-trash-o" aria-hidden="true"></i>
                   </button>
 
                   <button className=" btn btn-success m-2 " type="submit">
-                    Save
+                    Editar
+                    <i className="m-2 fa fa-pencil"></i>
                   </button>
                 </div>
               </div>

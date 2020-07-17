@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import Users from "./components/c1/users";
 import Form from "./components/c2/form";
+import EditForm from "./components/editForm/editform";
 
 class App extends React.Component {
   constructor() {
@@ -62,10 +63,16 @@ class App extends React.Component {
     console.log(request);
     this.getData();
   };
+  deleteUser = (e) => {
+    console.log(e);
+  };
   render() {
     return (
       <>
-        <Form handleInput={this.handleInput} addUser={this.addUser} />
+        <div className="row justify-content-center">
+          <Form handleInput={this.handleInput} addUser={this.addUser} />
+          <EditForm />
+        </div>
         <Users deleteUser={this.deleteUser} users={this.state.users} />
       </>
     );

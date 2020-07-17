@@ -1,11 +1,11 @@
 import React from "react";
 
-export default function Form(props) {
+export default function editform(props) {
   return (
     <>
       <div className="m-4 row">
         <div className="col-12 text-center">
-          <h1> Add User</h1>
+          <h1> Edit User</h1>
           <form onInput={props.handleInput} onSubmit={(e) => props.addUser(e)}>
             <div className="form-group">
               <input
