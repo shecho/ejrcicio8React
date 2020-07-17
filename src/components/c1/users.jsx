@@ -1,14 +1,14 @@
 import React from "react";
 
 export default function Users(props) {
-  console.log(props.users);
+  // console.log(props.users);
 
   return (
     <>
       <div className="row m-4">
         {props.users.map((user, id) => {
           return (
-            <div className="col-md-3 m-3 px-4" key={id}>
+            <div className="col-md-3 m-3 px-4" key={id} id={id}>
               <div className="card text-center">
                 <p id={user.id} className="d-none card-text">
                   {user.id}
@@ -34,7 +34,11 @@ export default function Users(props) {
                     <i className="m-2 fa fa-trash-o" aria-hidden="true"></i>
                   </button>
 
-                  <button className=" btn btn-success m-2 " type="submit">
+                  <button
+                    onClick={(e) => props.editUser(e)}
+                    className=" btn btn-success m-2 "
+                    type="submit"
+                  >
                     Editar
                     <i className="m-2 fa fa-pencil"></i>
                   </button>

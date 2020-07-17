@@ -1,7 +1,8 @@
 import React from "react";
 
 export default function Form(props) {
-  const { name, lastname, email, password } = props;
+  let { name, lastname, email, password } = props.user;
+  // console.log(props);
   return (
     <>
       <div className="m-4 row">

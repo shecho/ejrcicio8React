@@ -18,7 +18,8 @@ class App extends React.Component {
     this.getData();
     // fetch('https://academlo-api-users.herokuapp.com/users')
     // .then(res => res.json())
-    // .then(datos =>console.log(datos))
+    //clg .then(datos =>console.log(datos))
+    // console.log(this.state.userEdited);
   }
   getData = async () => {
     let url = "https://academlo-api-users.herokuapp.com/users";
@@ -26,7 +27,6 @@ class App extends React.Component {
     let data = await response.json();
     // console.log(data);
     this.setState({ users: data.data });
-    // console.log(this.state.users)
   };
 
   addUser = (e) => {
@@ -39,10 +39,9 @@ class App extends React.Component {
         "Content-Type": "application/json; charset=UTF-8",
       },
       body: JSON.stringify(this.state.newUser),
-    })
-      .then((response) => response.json())
-      .then((results) => console.log(results))
-      .catch((error) => console.log(error));
+    }).then((response) => response.json());
+    // .then((results) => console.log(results))
+    // .catch((error) => console.log(error));
   };
 
   handleInput = (e) => {
@@ -53,7 +52,7 @@ class App extends React.Component {
         [e.target.name]: e.target.value,
       },
     });
-    console.log(this.state.newUser);
+    // console.log(this.state.newUser);
   };
   // -----------------------------------------------------------------------------------------------
   // dlete user
@@ -65,18 +64,32 @@ class App extends React.Component {
     console.log(request);
     this.getData();
   };
-  yy;
+
   // editar usuario
   updateUser = (e) => {
     e.preventDefault();
-    console.log(e);
+    // console.log(e);
   };
   handleInputEdit = (e) => {
-    console.log(e);
+    // console.log(e.target.value);
+    this.setState({
+      userEdited: {
+        ...this.state.userEdited,
+        [e.target.name]: e.target.value,
+      },
+    });
+    console.log(this.state.userEdited);
   };
 
-  editUser = (e) => {
-    console.log(e);
+  editUser = async (e) => {
+    let idUsertoUpdate = e.target.parentElement.parentElement.parentElement.id;
+    // console.log(idUsertoUpdate);
+    let userToEdit = await this.state.users[idUsertoUpdate];
+    // console.log((userToEdit = await this.state.users[idUsertoUpdate]));
+    this.setState({
+      userEdited: { ...this.state.userEdited, userToEdit },
+    });
+    console.log(this.state.userEdited.userToEdit);
   };
   // -----------------------------------------------------------------------------------------------
   render() {
@@ -85,11 +98,16 @@ class App extends React.Component {
         <div className="row justify-content-center">
           <Form handleInput={this.handleInput} addUser={this.addUser} />
           <EditForm
-            handleInputEdit={this.handleInputEdit}
+            user={this.state.userEdited}
+            editInput={this.handleInputEdit}
             updateUser={this.updateUser}
           />
         </div>
-        <Users deleteUser={this.deleteUser} users={this.state.users} />
+        <Users
+          deleteUser={this.deleteUser}
+          users={this.state.users}
+          editUser={this.editUser}
+        />
       </>
     );
   }
