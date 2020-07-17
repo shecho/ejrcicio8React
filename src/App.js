@@ -66,11 +66,15 @@ class App extends React.Component {
   };
 
   // editar usuario
-  updateUser = (e) => {
+  updateUser = async (e) => {
     let id = 1;
     e.preventDefault();
     let url = `https://academlo-api-users.herokuapp.com/user/${id}`;
-    console.log(url);
+    let request = await fetch(url, {
+      method: "PUT",
+      body: JSON.stringify(this.state.userEdited),
+    });
+    console.log(request);
     // fetch aqui
   };
   handleInputEdit = (e) => {
