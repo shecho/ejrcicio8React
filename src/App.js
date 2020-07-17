@@ -67,8 +67,11 @@ class App extends React.Component {
 
   // editar usuario
   updateUser = (e) => {
+    let id = 1;
     e.preventDefault();
-    // console.log(e);
+    let url = `https://academlo-api-users.herokuapp.com/user/${id}`;
+    console.log(url);
+    // fetch aqui
   };
   handleInputEdit = (e) => {
     // console.log(e.target.value);
@@ -83,13 +86,13 @@ class App extends React.Component {
 
   editUser = async (e) => {
     let idUsertoUpdate = e.target.parentElement.parentElement.parentElement.id;
-    // console.log(idUsertoUpdate);
+    console.log(idUsertoUpdate);
     let userToEdit = await this.state.users[idUsertoUpdate];
     // console.log((userToEdit = await this.state.users[idUsertoUpdate]));
     this.setState({
-      userEdited: { ...this.state.userEdited, userToEdit },
+      userEdited: { ...this.state.userEdited, ...userToEdit },
     });
-    console.log(this.state.userEdited.userToEdit);
+    console.log(this.state.userEdited);
   };
   // -----------------------------------------------------------------------------------------------
   render() {
