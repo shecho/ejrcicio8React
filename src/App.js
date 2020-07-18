@@ -39,7 +39,10 @@ class App extends React.Component {
         "Content-Type": "application/json; charset=UTF-8",
       },
       body: JSON.stringify(this.state.newUser),
-    }).then((response) => response.json());
+    }).then((response) => {
+      response.json();
+      this.getData();
+    });
     // .then((results) => console.log(results))
     // .catch((error) => console.log(error));
   };
