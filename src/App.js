@@ -62,11 +62,11 @@ class App extends React.Component {
   deleteUser = async (e) => {
     // console.log(e.target.parentElement.parentElement.firstElementChild.id);
     let id = e.target.parentElement.parentElement.firstElementChild.id;
-    console.log(id);
+    // console.log(id);
     let url = `https://academlo-api-users.herokuapp.com/user/${id}`;
     // console.log(url);
     let request = await fetch(url, { method: "DELETE" });
-    // console.log(request);
+    console.log(request);
     this.getData();
   };
 
@@ -76,7 +76,7 @@ class App extends React.Component {
     let id = this.state.userEdited.id;
     // console.log(this.state.userEdited.id);
     let data = this.state.userEdited;
-    console.log(data);
+    // console.log(data);
     let url = `https://academlo-api-users.herokuapp.com/user/${id}`;
     // console.log(url);
     let request = await fetch(url, {
