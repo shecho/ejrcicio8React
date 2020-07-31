@@ -40,7 +40,7 @@ class App extends React.Component {
       },
       body: JSON.stringify(this.state.newUser),
     }).then((response) => {
-      response.json();
+      response. ();
       this.getData();
     });
     // .then((results) => console.log(results))

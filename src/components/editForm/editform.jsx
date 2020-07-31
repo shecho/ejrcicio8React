@@ -1,5 +1,4 @@
 import React from "react";
-
 export default function Form(props) {
   let { name, lastname, email, password } = props.user;
   // console.log(props);
